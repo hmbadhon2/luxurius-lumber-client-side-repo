@@ -6,12 +6,13 @@ import Header from '../Pages/Shared/Header/Header';
 
 const DashboardLayout = () => {
     const {user} = useContext(AuthContext)
+    
     return (
         <div>
             <Header></Header>
         <div className="drawer drawer-mobile">
         <input id="Luxurious-Lumber" type="checkbox" className="drawer-toggle" />
-        <div className="drawer-content flex flex-col items-center justify-center">
+        <div className="drawer-content flex flex-col items-center">
        <Outlet></Outlet>
 
         {/* <label htmlFor="Luxurious-Lumber" className="btn btn-primary drawer-button lg:hidden">Open drawer</label>
@@ -33,8 +34,8 @@ const DashboardLayout = () => {
              {
                 // isAdmin &&
                 <>
-                <li><Link to='/dashboard/myProduct'> All Seller</Link></li>
-                <li><Link to='/dashboard/myProduct'> All Buyer</Link></li>
+                <li><Link to='/dashboard/allSeller'> All Seller</Link></li>
+                <li><Link to='/dashboard/allBuyer'> All Buyer</Link></li>
                 </>
              }
             

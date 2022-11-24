@@ -10,13 +10,14 @@ const SignUp = () => {
     const googleProvider = new GoogleAuthProvider()
     const {createUser,  googleUser} = useContext(AuthContext)
     const [signError, setSignError] = useState('')
-
     const { register, handleSubmit, formState:{errors}} = useForm()
     
     const handleSignUp = data =>{
+
         setSignError('')
-        console.log(data.name, data.email)
+        saveUser(data.name, data.email, data.accType)
         createUser(data.email, data.password)
+
         .then(res =>{
             const user = res.user;
             toast.success('User created successfully')
@@ -39,6 +40,23 @@ const SignUp = () => {
         console.log(err)
         setSignError(err)
     })
+
+    }
+
+    const saveUser = (name, email, accType) =>{
+        const user = {name,email,accType}
+        fetch('http://localhost:5000/users',{
+            method:"POST",
+            headers:{
+                'content-type':'application/json'
+            },
+            body:JSON.stringify(user)
+        })
+        .then(res => res.json())
+        .then(data=>{
+            console.log(data)
+        })
+        .catch(err => console.log(err))
 
     }
     
@@ -120,7 +138,7 @@ const SignUp = () => {
                 </label>
               </div>
               <select 
-               {...register ('seller')}
+               {...register ('accType')}
                className="select px-3 py-2 border rounded-md border-gray-300 bg-gray-200 focus:outline-green-500 text-gray-900 w-full ">
                 <option defaultValue='user' selected> User</option>
                 <option defaultValue='seller'>Seller</option>
