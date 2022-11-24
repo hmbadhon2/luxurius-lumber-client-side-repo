@@ -1,21 +1,22 @@
 import React, { createContext, useEffect, useState } from 'react';
 import {createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut} from 'firebase/auth'
-import { AuthContext } from 'd:/projects/doctors-portal/src/context/authprovider';
-import app from '../FIrebase/Firebase.config';
+import app from '../Firebase/Firebase.config';
 
-export const authContext = createContext();
+
+
+export const AuthContext = createContext();
 const auth = getAuth(app);
 
-const AutoProvider = ({children}) => {
+const AuthProvider = ({children}) => {
     const {user, setUser} = useState('');
     const {loading, setLoading} = useState(true)
 
    const createUser = (email, password) =>{
-    return createUserWithEmailAndPassword(email, password, auth)
+    return createUserWithEmailAndPassword(auth,email, password)
    }
 
    const signin = (email, password) =>{
-    return signInWithEmailAndPassword(email, password,auth);
+    return signInWithEmailAndPassword(auth, email, password,);
    }
 
    const googleUser = (googleProvider) =>{
@@ -32,8 +33,8 @@ useEffect(()=>{
  const unSubscribe=onAuthStateChanged(auth, 
     currentUser =>{
         console.log(currentUser);
-        setUser(currentUser);
-        setLoading(false)
+        // setUser(currentUser);
+        // setLoading(false)
     })
  return ()=> {
     return unSubscribe()
@@ -56,11 +57,10 @@ useEffect(()=>{
     }
 
     return (
-       <AuthContext.Provider value={authInfo}
-        >
-             {children}
-        </AuthContext.Provider>
+      <AuthContext.Provider value = {authInfo}>
+        {children}
+      </AuthContext.Provider>
     );
 };
 
-export default AutoProvider;
+export default AuthProvider;
