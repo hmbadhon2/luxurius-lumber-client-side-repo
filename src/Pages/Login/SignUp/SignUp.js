@@ -89,7 +89,7 @@ const SignUp = () => {
                    })}
               
                 placeholder='Enter Your Name Here'
-                className='w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-green-500 bg-gray-200 text-gray-900'
+                className='w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-primary bg-gray-200 text-gray-900'
                 data-temp-mail-org='0'
               />
                {errors.name && <p className='text-red-500'>{errors.name.message}</p>}
@@ -107,7 +107,7 @@ const SignUp = () => {
                 name='email'
                 id='email'
                 placeholder='Enter Your Email Here'
-                className='w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-green-500 bg-gray-200 text-gray-900'
+                className='w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-primary bg-gray-200 text-gray-900'
                 data-temp-mail-org='0'
               />
                {errors.email && <p className='text-red-500'>{errors.email.message}</p>}
@@ -127,7 +127,7 @@ const SignUp = () => {
                 id='password'
                 
                 placeholder='*******'
-                className='w-full px-3 py-2 border rounded-md border-gray-300 bg-gray-200 focus:outline-green-500 text-gray-900'
+                className='w-full px-3 py-2 border rounded-md border-gray-300 bg-gray-200 focus:outline-primary text-gray-900'
               />
                {errors.password && <p className='text-red-500'>{errors.password.message}</p>}
             </div>
@@ -139,7 +139,7 @@ const SignUp = () => {
               </div>
               <select 
                {...register ('accType')}
-               className="select px-3 py-2 border rounded-md border-gray-300 bg-gray-200 focus:outline-green-500 text-gray-900 w-full ">
+               className="select px-3 py-2 border rounded-md border-gray-300 bg-gray-200 focus:outline-primary text-gray-900 w-full ">
                 <option defaultValue='user' selected> User</option>
                 <option defaultValue='seller'>Seller</option>
             </select>
