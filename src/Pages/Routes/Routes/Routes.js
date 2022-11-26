@@ -7,6 +7,7 @@ import MyProduct from "../../Dashboard/AddProduct/MyProduct"
 import AllBuyers from "../../Dashboard/AllBuyers/AllBuyers";
 import AllSeller from "../../Dashboard/AllSeller/AllSeller";
 import MyOrders from "../../Dashboard/MyOrders/MyOrders";
+import ProductDetails from "../../Home/Home/Categories/ProductsDetail/ProductDetails";
 import Home from '../../Home/Home/Home'
 import Login from "../../Login/Login/Login";
 import SignUp from "../../Login/SignUp/SignUp";
@@ -27,6 +28,12 @@ export const router = createBrowserRouter([
             {
                 path:'/home',
                 element:<Home></Home>
+            },
+            {
+                path:'/categories/:id',
+                element:<ProductDetails></ProductDetails>,
+                loader:({params}) => fetch(`http://localhost:5000/products/${params.id}`)
+
             },
             {
                 path:'/blog',

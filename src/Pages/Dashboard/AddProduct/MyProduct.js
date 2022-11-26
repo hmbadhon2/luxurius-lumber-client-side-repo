@@ -8,7 +8,7 @@ const MyProduct = () => {
         queryFn: ()=> fetch('http://localhost:5000/products')
         .then(res => res.json())
         .then(data => {
-            console.log(data)
+          
             return data;
         })
     })

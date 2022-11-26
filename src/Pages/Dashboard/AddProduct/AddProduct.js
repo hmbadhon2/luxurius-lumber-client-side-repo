@@ -15,6 +15,10 @@ const AddProduct = () => {
         queryKey:['Categories'],
         queryFn: ()=> fetch('http://localhost:5000/categories')
         .then(res => res.json())
+        .then(data => {
+          console.log(data)
+          return data;
+        })
       
       })
 
@@ -22,7 +26,7 @@ const AddProduct = () => {
 
     const handleAddProduct = data => {
       // console.log(data.name, data.originalPrice, data.reSellPrice, data.usesYear, data.category,data.location,data.productType, data.phone,data.purchaseYear, data.productDescription  )
-
+      
       const image = data.image[0]
       const formData = new FormData();
       formData.append('image', image);
@@ -41,7 +45,7 @@ const AddProduct = () => {
             originalPrice:data.originalPrice,
             sellPrice:data.reSellPrice,
             uses:data.usesYear,
-            category:data.category,
+            category:data.category._id,
             location:data.location,
             productType:data.ProductType,
             sellerPhone:data.phone,
@@ -49,7 +53,9 @@ const AddProduct = () => {
             BuyingYear:data.purchaseYear,
             description:data.productDescription,
             image:photoData.data.url,
-            time:time
+            time:time,
+           
+            
            }
 
            fetch('http://localhost:5000/products',{
@@ -170,14 +176,14 @@ const AddProduct = () => {
                   </label>
                 </div>
                 <select 
-                {...register ("category",{
+                {...register ("category._id",{
                   required:'category is required'
                 })}
                 className="select px-3 py-2 border rounded-md border-gray-300 bg-gray-200 focus:outline-primary text-gray-900 w-full ">
                   {
                     Categories.map(category => <option
                       key={category._id} 
-                      defaultValue='category' selected> {category.title}</option>)
+                     value={category._id} selected> {category.title}</option>)
                   }
                   
               </select>
@@ -195,7 +201,7 @@ const AddProduct = () => {
                   required:'location is required'
                 })}
                 className="select px-3 py-2 border rounded-md border-gray-300 bg-gray-200 focus:outline-primary text-gray-900 w-full ">
-                  <option  selected> Dhaka</option>
+                  <option value="1" selected> Dhaka</option>
                   <option >Chittagong</option>
                   <option >Sylhet</option>
                   <option >Barishal</option>
@@ -213,9 +219,9 @@ const AddProduct = () => {
                 <select 
                 {...register ("productType")}
                 className="select px-3 py-2 border rounded-md border-gray-300 bg-gray-200 focus:outline-primary text-gray-900 w-full ">
-                  <option  selected> Excellent</option>
-                  <option >Good</option>
-                  <option >Fair</option>
+                  <option value="1"  selected> Excellent</option>
+                  <option value="2" >Good</option>
+                  <option value="3">Fair</option>
                  
               </select>
               
