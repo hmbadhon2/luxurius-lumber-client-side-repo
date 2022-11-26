@@ -2,10 +2,10 @@ import { createBrowserRouter } from "react-router-dom";
 import DashboardLayout from "../../../Layout/DashboardLayout";
 import Main from "../../../Layout/Main";
 import Blogs from "../../Blogs/Blogs";
+import AddProduct from "../../Dashboard/AddProduct/AddProduct";
+import MyProduct from "../../Dashboard/AddProduct/MyProduct"
 import AllBuyers from "../../Dashboard/AllBuyers/AllBuyers";
 import AllSeller from "../../Dashboard/AllSeller/AllSeller";
-import AddProduct from "../../Dashboard/MyOrders/AddProduct/AddProduct";
-import MyProduct from "../../Dashboard/MyOrders/AddProduct/MyProduct";
 import MyOrders from "../../Dashboard/MyOrders/MyOrders";
 import Home from '../../Home/Home/Home'
 import Login from "../../Login/Login/Login";

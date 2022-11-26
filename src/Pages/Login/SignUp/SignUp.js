@@ -15,6 +15,7 @@ const SignUp = () => {
     const handleSignUp = data =>{
 
         setSignError('')
+        console.log(data.name)
         saveUser(data.name, data.email, data.accType)
         createUser(data.email, data.password)
 
