@@ -1,17 +1,39 @@
-import { useQuery } from '@tanstack/react-query';
-import React from 'react';
+
+import React, { useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
+import BookingProduct from '../BookingProduct/BookingProduct';
+import ProductDetailsCard from './ProductDetailsCard';
 
 
 const ProductDetails = () => {
 
-
+    const [bookingProduct, setBookingProduct] = useState(null)
     const products = useLoaderData()
+   
+    console.log(products)
 
     
     return (
-        <div>
-            <h1> This is product details page {products.length}</h1>
+        <div className='grid grid-cols-1 lg:grid-cols-2 gap-6  mt-32 max-w-screen-lg	 mx-auto'>
+            
+
+            {
+                products.map( product => <ProductDetailsCard
+                    key={product._id}
+                    product={product}
+                    setBookingProduct = {setBookingProduct}
+                >
+                </ProductDetailsCard>
+               )
+            }
+
+            {
+                bookingProduct &&
+               <BookingProduct
+               bookingProduct ={bookingProduct}
+               setBookingProduct ={setBookingProduct}
+               ></BookingProduct>
+            }
         </div>
     );
 };
