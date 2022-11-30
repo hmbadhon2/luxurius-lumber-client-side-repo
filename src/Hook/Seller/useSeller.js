@@ -6,7 +6,7 @@ const useSeller = (email) => {
     const [isSellerLoading, setIsSellerLoading] = useState(true)
 
     useEffect(()=>{
-        fetch(`http://localhost:5000/user/seller/${email}`)
+        fetch(`https://luxurious-lumber-server.vercel.app/user/seller/${email}`)
         .then(res => res.json())
         .then(data => {
             console.log(data);

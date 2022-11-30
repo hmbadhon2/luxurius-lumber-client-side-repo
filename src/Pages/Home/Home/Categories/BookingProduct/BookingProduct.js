@@ -24,7 +24,7 @@ const BookingProduct = ({bookingProduct,setBookingProduct}) => {
       email:email
     }
     console.log(bookings)
-    fetch('http://localhost:5000/bookings',{
+    fetch('https://luxurious-lumber-server.vercel.app/bookings',{
       method:'POST',
       headers:{
         'content-type':'application/json'

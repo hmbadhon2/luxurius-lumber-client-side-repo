@@ -5,7 +5,7 @@ import CategoriesCard from './CategoriesCard';
 const Categories = () => {
 const {data:Categories=[]} = useQuery({
   queryKey:['Categories'],
-  queryFn: ()=> fetch('http://localhost:5000/categories')
+  queryFn: ()=> fetch('https://luxurious-lumber-server.vercel.app/categories')
   .then(res => res.json())
 })
 

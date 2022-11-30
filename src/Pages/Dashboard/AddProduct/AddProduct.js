@@ -13,7 +13,7 @@ const AddProduct = () => {
     const time = new Date().toLocaleTimeString();
     const {data:Categories=[]} = useQuery({
         queryKey:['Categories'],
-        queryFn: ()=> fetch('http://localhost:5000/categories')
+        queryFn: ()=> fetch('https://luxurious-lumber-server.vercel.app/categories')
         .then(res => res.json())
         .then(data => {
           console.log(data)
@@ -59,7 +59,7 @@ const AddProduct = () => {
 
            console.log(product)
 
-           fetch(`http://localhost:5000/products?email=${user?.email}`,{
+           fetch(`https://luxurious-lumber-server.vercel.app/products?email=${user?.email}`,{
             method:'POST',
             headers:{
               'content-type':'application/json'

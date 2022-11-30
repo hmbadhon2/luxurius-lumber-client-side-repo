@@ -7,7 +7,7 @@ const MyOrders = () => {
     const {user} = useContext(AuthContext)
     const {data:bookings=[]} = useQuery({
         queryKey:['bookings',user?.email],
-        queryFn: ()=>fetch(`http://localhost:5000/bookings?email=${user?.email}`)
+        queryFn: ()=>fetch(`https://luxurious-lumber-server.vercel.app/bookings?email=${user?.email}`)
         .then(res => res.json())
         .then(data => {
             console.log(data)

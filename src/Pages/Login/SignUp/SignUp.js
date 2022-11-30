@@ -61,7 +61,7 @@ const SignUp = () => {
 
     const saveUser = (name, email, accType) =>{
         const user = {name,email,accType}
-        fetch('http://localhost:5000/users',{
+        fetch('https://luxurious-lumber-server.vercel.app/users',{
             method:"POST",
             headers:{
                 'content-type':'application/json'

@@ -6,7 +6,7 @@ const AllSeller = () => {
 
     const {data:allSellers =[], refetch} = useQuery({
         queryKey:['allSeller'],
-        queryFn: ()=> fetch('http://localhost:5000/allSellers')
+        queryFn: ()=> fetch('https://luxurious-lumber-server.vercel.app/allSellers')
         .then(res => res.json())
         .then(data=> {
             console.log(data)
@@ -17,7 +17,7 @@ const AllSeller = () => {
     })
 
     const handleUserDelete = id =>{
-        fetch(`http://localhost:5000/users/${id}`,{
+        fetch(`https://luxurious-lumber-server.vercel.app/users/${id}`,{
            method:'DELETE' 
         })
         .then(res => res.json())
@@ -33,7 +33,7 @@ const AllSeller = () => {
     }
 
     const handleVerify = id =>{
-        fetch(`http://localhost:5000/allSeller/${id}`,{
+        fetch(`https://luxurious-lumber-server.vercel.app/allSeller/${id}`,{
             method:'PUT' 
          })
          .then(res => res.json())
