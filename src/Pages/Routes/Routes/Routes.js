@@ -7,11 +7,14 @@ import MyProduct from "../../Dashboard/AddProduct/MyProduct"
 import AllBuyers from "../../Dashboard/AllBuyers/AllBuyers";
 import AllSeller from "../../Dashboard/AllSeller/AllSeller";
 import MyOrders from "../../Dashboard/MyOrders/MyOrders";
+import Payment from "../../Dashboard/Payment/Payment";
 import ProductDetails from "../../Home/Home/Categories/ProductsDetail/ProductDetails";
 import Home from '../../Home/Home/Home'
 import Login from "../../Login/Login/Login";
 import SignUp from "../../Login/SignUp/SignUp";
 import ErrorPage from "../../Shared/ErrorPage/ErrorPage";
+import AdminRoutes from "../AdminRoute/AdminRoutes";
+import PrivateRoutes from '../PrivateRoutes/PrivateRoutes';
 
 
 
@@ -52,10 +55,10 @@ export const router = createBrowserRouter([
     },
     {
         path:'/dashboard', 
-        element:<DashboardLayout></DashboardLayout>,
+        element:<PrivateRoutes><DashboardLayout></DashboardLayout></PrivateRoutes>,
         errorElement:<ErrorPage></ErrorPage>,
         children:[
-            {path:'/dashboard',
+            {path:'/dashboard/myOrders',
              element:<MyOrders></MyOrders>,
             },
             {path:'/dashboard/addProduct',
@@ -65,10 +68,14 @@ export const router = createBrowserRouter([
              element:<MyProduct></MyProduct>,
             },
             {path:'/dashboard/allSeller',
-             element:<AllSeller></AllSeller>,
+             element:<AdminRoutes><AllSeller></AllSeller></AdminRoutes>,
             },
             {path:'/dashboard/allBuyer',
-             element:<AllBuyers></AllBuyers>,
+             element:<AdminRoutes><AllBuyers></AllBuyers></AdminRoutes>,
+            },
+            {path:'/dashboard/payment/:id',
+             element:<Payment></Payment>,
+             loader:({params})=> fetch(`http://localhost:5000/bookings/${params.id}`)
             },
         ]
     }

@@ -2,7 +2,7 @@ import { GoogleAuthProvider } from 'firebase/auth';
 import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import PrimaryButton from '../../../Components/PrimaryButton/PrimaryButton';
 import { AuthContext } from '../../../Context/AuthProvider';
 
@@ -11,28 +11,37 @@ const SignUp = () => {
     const {createUser,  googleUser,updateUser} = useContext(AuthContext)
     const [signError, setSignError] = useState('')
     const { register, handleSubmit, formState:{errors}} = useForm()
+    const navigate = useNavigate();
+    const location = useLocation();
+    const  from = location.state?.from?.pathname || "/";
     
     const handleSignUp = data =>{
 
         setSignError('')
+        
        
         createUser(data.email, data.password)
        .then(res =>{
             const user = res.user;
-            toast.success('User created successfully')
+           
             const userInfo={
               displayName:data.name
             }
             updateUser(userInfo)
             .then(()=>{
               saveUser(data.name, data.email, data.accType)
+              toast.success('User created successfully')
+              navigate(from, { replace: true })
+              
+             
             })
-            .catch(err => console)
-            console.log(user)
+            .catch(err => console.error(err))
+            
         })
     .catch(err => {
         console.log(err)
         setSignError(err)
+       
     }) 
     }
 
@@ -147,7 +156,7 @@ const SignUp = () => {
               <select 
                {...register ('accType')}
                className="select px-3 py-2 border rounded-md border-gray-300 bg-gray-200 focus:outline-primary text-gray-900 w-full ">
-                <option defaultValue='user' selected> User</option>
+                <option defaultValue='user' selected> Buyers</option>
                 <option defaultValue='seller'>Seller</option>
             </select>
              

@@ -43,6 +43,12 @@ const MyProduct = () => {
             <th>
               <button className="btn btn-ghost btn-xs">Available</button>
             </th>
+
+            <th>
+              
+              <button className="btn btn-ghost btn-xs">Available</button>
+
+            </th>
           </tr>)
    }
      

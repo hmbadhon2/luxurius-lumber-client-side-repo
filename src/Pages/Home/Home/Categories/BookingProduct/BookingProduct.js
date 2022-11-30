@@ -35,9 +35,10 @@ const BookingProduct = ({bookingProduct,setBookingProduct}) => {
     .then(data =>{
       
       console.log(data)
-      setBookingProduct(null)
+      
       if(data.acknowledged){
         toast.success('Your booking is confirmed')
+        setBookingProduct(null)
       }
     
       else{
