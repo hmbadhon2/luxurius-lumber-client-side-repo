@@ -1,7 +1,9 @@
 import React from 'react';
 import useEffect from 'react'
+import useTitle from '../../Hook/Title/useTitle';
 
 const Blogs = () => {
+    useTitle('blog')
 
 const blogs = [
     {
