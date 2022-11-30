@@ -1,12 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import lumberLogo from '../../../assets/lumber logo2.pngg'
+import lumberLogo from '../../../assets/lumber logo2.png'
 const Footer = () => {
     return (
         <footer className="footer mb-0 mt-32 p-10 bg-primary text-white">
         <div>
          <img src={lumberLogo} alt="" />
-          <p>ACME Industries Ltd.<br/>Providing reliable tech since 1992</p>
+          <p>Luxurious Lumber .<br/>Second-Hand Product Seller Since 2020</p>
         </div> 
         <div>
           <span className="footer-title">Services</span> 

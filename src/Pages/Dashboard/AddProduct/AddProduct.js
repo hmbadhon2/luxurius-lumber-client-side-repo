@@ -54,9 +54,10 @@ const AddProduct = () => {
             description:data.productDescription,
             image:photoData.data.url,
             time:time,
-           
-            
+            email:user?.email
            }
+
+           console.log(product)
 
            fetch('http://localhost:5000/products',{
             method:'POST',

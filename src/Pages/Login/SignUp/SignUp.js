@@ -154,7 +154,9 @@ const SignUp = () => {
                 </label>
               </div>
               <select 
-               {...register ('accType')}
+               {...register ('accType',{
+                required:"Acc Type  is required"
+               })}
                className="select px-3 py-2 border rounded-md border-gray-300 bg-gray-200 focus:outline-primary text-gray-900 w-full ">
                 <option defaultValue='user' selected> Buyers</option>
                 <option defaultValue='seller'>Seller</option>

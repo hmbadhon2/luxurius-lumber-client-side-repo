@@ -54,7 +54,7 @@ const MyOrders = () => {
                            {booking.title}
                           </td>
                           <td>{booking.price}</td>
-                          <td> {user?.email}</td>
+                          
                           <th>
 
                             {

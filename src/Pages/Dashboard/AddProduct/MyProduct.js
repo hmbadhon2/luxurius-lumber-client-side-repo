@@ -1,11 +1,13 @@
 import { useQuery } from '@tanstack/react-query';
-import React from 'react';
+import React, { useContext } from 'react';
+import { AuthContext } from '../../../Context/AuthProvider';
 
 const MyProduct = () => {
 
+  const {user} = useContext(AuthContext)
     const {data:products=[]} =useQuery({
         queryKey:['products'],
-        queryFn: ()=> fetch('http://localhost:5000/products')
+        queryFn: ()=> fetch(`http://localhost:5000/products?email=${user?.email}`)
         .then(res => res.json())
         .then(data => {
           
@@ -24,6 +26,7 @@ const MyProduct = () => {
         <th>Product Name</th>
         <th>Price</th>
         <th>Product Status</th>
+        <th>Advertised</th>
        
       </tr>
     </thead>
@@ -40,13 +43,23 @@ const MyProduct = () => {
               
             </td>
             <td>{product.sellPrice}</td>
-            <th>
-              <button className="btn btn-ghost btn-xs">Available</button>
-            </th>
+           
 
             <th>
+              {
+                 !product.paid &&
               
-              <button className="btn btn-ghost btn-xs">Available</button>
+                 <button className="btn btn-error btn-xs">Available</button>
+              }
+             
+                {
+                                 product.paid &&
+                               <span className='text-error'> Sold </span> 
+                }
+
+            </th>
+            <th>
+              <button className="btn btn-primary btn-xs">Advertised</button>
 
             </th>
           </tr>)
