@@ -14,7 +14,11 @@ const ProductDetailsCard = ({product, setBookingProduct}) => {
           <div className='flex justify-between'>
             <h2 className='font-semibold text-primary'>Location: {location} </h2>
             <h2 className='font-semibold text-primary'>Seller: {sellerName} </h2>
-           
+           {
+              // seller.verified &&
+              <span> <div className="badge caret-blue-800"></div></span> 
+
+           }
           </div>
           <p className='font-semibold text-primary'> Original Price:${originalPrice}</p>
           <div className="card-actions justify-end">
